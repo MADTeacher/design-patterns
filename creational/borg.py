@@ -33,7 +33,7 @@ if __name__ == "__main__":
     my_singleton2 = MonostateSingleton()
     my_singleton2.set_name("New Singleton")
     print("Singleton2 name: " + my_singleton2.get_name())
-    print("Singleton2 name: " + my_singleton1.name)
+    print("Singleton1 name: " + my_singleton1.name)
     print(my_singleton1)
     print(my_singleton2)
     print(id(my_singleton1) == id(my_singleton2))
