@@ -1,2 +1,2 @@
 # design-patterns
-software design patterns on Python
+Code example from the book "Principles and software design patterns"
