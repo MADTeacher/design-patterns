@@ -164,13 +164,10 @@ class EspressoState(State):
 
 class CoffeeMachine:
     """Класс кофе-машины"""
-    def __init__(self, water: float,
-                 milk: float, money: int):
+    def __init__(self, water: float, milk: float):
         self.water = water
         self.milk = milk
-        self.money = money
         self.money: int = 0
-        self.eject_money: int = 0
         self.__states: Dict[CoffeeState, State] = {
             CoffeeState.IDLE: IdleState(),
             CoffeeState.CHOOSE: WaitChooseState(),
@@ -218,7 +215,7 @@ class CoffeeMachine:
 
 
 if __name__ == "__main__":
-    coffee_machine = CoffeeMachine(1.0, 1.0, 1000)
+    coffee_machine = CoffeeMachine(1.0, 1.0)
     coffee_machine.make_coffee()
     coffee_machine.insert_money(10)
     coffee_machine.insert_money(10)
@@ -226,7 +223,7 @@ if __name__ == "__main__":
     coffee_machine.make_coffee()
     coffee_machine.insert_money(20)
     print("**** Когда мало продуктов для приготовления кофе ****")
-    coffee_machine = CoffeeMachine(0.1, 0.1, 1000)
+    coffee_machine = CoffeeMachine(0.1, 0.1)
     coffee_machine.insert_money(100)
     coffee_machine.make_coffee()
     coffee_machine.latte()
