@@ -1,14 +1,8 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
 from enum import Enum
 from typing import List
 from random import choice
-
-
-class Worker(ABC):
-    # так не делайте, в данном случае такое
-    # объявление класса-заглушки используется для написания
-    # всего кода примера c использованием аннотаций в одном файле
-    ...
 
 
 class OrderType(Enum):
@@ -53,6 +47,7 @@ class IMediator(ABC):
     @abstractmethod
     def add_worker(self, worker: Worker) -> None:
         ...
+
 
 class Worker(ABC):
     """Абстрактный базовый класс для

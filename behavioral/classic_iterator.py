@@ -2,11 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List
 
 
-class Item(ABC):
-    ...
-
-
-class PizzaItem(Item):
+class PizzaItem:
     def __init__(self, number):
         self.number = number
 
@@ -16,7 +12,7 @@ class PizzaItem(Item):
 
 class Iterator(ABC):
     @abstractmethod
-    def next(self) -> Item:
+    def next(self) -> PizzaItem:
         ...
 
     @abstractmethod
@@ -29,7 +25,7 @@ class PizzaSliceIterator(Iterator):
         self._pizza = pizza
         self._index = 0
 
-    def next(self) -> Item:
+    def next(self) -> PizzaItem:
         pizza_item = self._pizza[self._index]
         self._index += 1
         return pizza_item

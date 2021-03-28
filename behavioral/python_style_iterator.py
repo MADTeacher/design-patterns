@@ -1,13 +1,8 @@
-from abc import ABC
 from typing import List
 from collections.abc import Iterable, Iterator
 
 
-class Item(ABC):
-    ...
-
-
-class PizzaItem(Item):
+class PizzaItem:
     def __init__(self, number):
         self.number = number
 
@@ -22,7 +17,7 @@ class PizzaSliceIterator(Iterator):
         self._index: int = -1 if reverse else 0
         self._reverse = reverse
 
-    def __next__(self) -> Item:
+    def __next__(self) -> PizzaItem:
         try:
             pizza_item = self._pizza[self._index]
             self._index += -1 if self._reverse else 1

@@ -12,7 +12,7 @@ class OrderItemVisitor(ABC):
 class ItemElement(ABC):
     """Интерфейс для заказываемых продуктов"""
     @abstractmethod
-    def accept(self, visitor) -> OrderItemVisitor:
+    def accept(self, visitor: OrderItemVisitor) -> float:
         ...
 
 
@@ -25,7 +25,7 @@ class Pizza(ItemElement):
     def get_price(self) -> float:
         return self.price
 
-    def accept(self, visitor) -> OrderItemVisitor:
+    def accept(self, visitor: OrderItemVisitor) -> float:
         return visitor.visit(self)
 
 
@@ -44,14 +44,14 @@ class Coffee(ItemElement):
     def get_capacity(self) -> float:
         return self.capacity
 
-    def accept(self, visitor) -> OrderItemVisitor:
+    def accept(self, visitor: OrderItemVisitor) -> float:
         return visitor.visit(self)
 
 
 class WithOutDiscountVisitor(OrderItemVisitor):
     """Посчитываем сумму заказа с
     без учета скидки"""
-    def visit(self, item) -> float:
+    def visit(self, item: ItemElement) -> float:
         cost = 0
         if isinstance(item, Pizza):
             cost = item.get_price()
@@ -63,7 +63,7 @@ class WithOutDiscountVisitor(OrderItemVisitor):
 class OnlyPizzaDiscountVisitor(OrderItemVisitor):
     """Посчитываем сумму заказа с
     учетом скидки на всю пиццу в 15%"""
-    def visit(self, item) -> float:
+    def visit(self, item: ItemElement) -> float:
         cost = 0
         if isinstance(item, Pizza):
             cost = item.get_price()
@@ -76,7 +76,7 @@ class OnlyPizzaDiscountVisitor(OrderItemVisitor):
 class OnlyCoffeeDiscountVisitor(OrderItemVisitor):
     """Посчитываем сумму заказа с
     учетом скидки на всё кофе в 35%"""
-    def visit(self, item) -> float:
+    def visit(self, item: ItemElement) -> float:
         cost = 0
         if isinstance(item, Pizza):
             cost = item.get_price()
@@ -89,7 +89,7 @@ class OnlyCoffeeDiscountVisitor(OrderItemVisitor):
 class AllDiscountVisitor(OrderItemVisitor):
     """Посчитываем сумму заказа с
     учетом скидки на всё в 20"""
-    def visit(self, item) -> float:
+    def visit(self, item: ItemElement) -> float:
         cost = 0
         if isinstance(item, Pizza):
             cost = item.get_price()
